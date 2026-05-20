@@ -1,13 +1,271 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f1f5fb 0%, #dfe7f5 100%);
+  color: #212121;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-card,
+.dashboard-card,
+.dashboard-panel {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(48, 63, 159, 0.08);
+  padding: 24px;
+}
+
+.auth-title,
+.dashboard-title,
+.panel-title {
+  margin: 0 0 20px;
+  font-size: 1.45rem;
+  letter-spacing: 0.02em;
+}
+
+.auth-input,
+.auth-select,
+.button,
+.small-button {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.auth-input:focus,
+.auth-select:focus {
+  border-color: #4f70ff;
+  box-shadow: 0 0 0 4px rgba(79, 112, 255, 0.12);
+}
+
+.button {
+  margin-top: 15px;
+  background-color: #4f70ff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #3d59d1;
+}
+
+.small-button {
+  display: inline-block;
+  margin-top: 12px;
+  background: transparent;
+  color: #4f70ff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.small-button:hover {
+  text-decoration: underline;
+}
+
+.auth-footer,
+.dashboard-header,
+.loan-section,
+.loan-table-wrapper {
+  margin-top: 18px;
+}
+
+.auth-footer {
+  text-align: center;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.auth-link {
+  color: #4f70ff;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.dashboard-page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.dashboard-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.dashboard-top h1 {
+  margin: 0;
+  font-size: 1.9rem;
+}
+
+.dashboard-top span {
+  color: #475569;
+}
+
+.logout-button {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 1px solid #94a3b8;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #f8fafc;
+}
+
+.dashboard-panel {
+  max-width: 100%;
+  padding: 22px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+@media (min-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1.4fr;
+  }
+}
+
+.loan-table-wrapper {
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.loan-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+@media (max-width: 640px) {
+  .page-wrapper {
+    padding: 12px;
+  }
+
+  .auth-card,
+  .dashboard-panel {
+    padding: 18px;
+  }
+
+  .dashboard-page {
+    padding: 20px 14px;
+  }
+
+  .dashboard-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-top button {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 12px;
+  }
+
+  .dashboard-top h1 {
+    font-size: 1.55rem;
+  }
+
+  .loan-table th,
+  .loan-table td {
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-title,
+  .dashboard-title,
+  .panel-title {
+    font-size: 1.3rem;
+  }
+
+  .button,
+  .auth-input,
+  .auth-select {
+    font-size: 0.92rem;
+  }
+}
+
+.loan-table th,
+.loan-table td {
+  padding: 14px 12px;
+  text-align: left;
+}
+
+.loan-table th {
+  color: #334155;
+  font-weight: 600;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.loan-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.loan-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.loan-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.loan-tag.pending {
+  background: #f59e0b;
+}
+
+.loan-tag.approved {
+  background: #10b981;
+}
+
+.loan-tag.rejected {
+  background: #ef4444;
+}
+
+.action-row button {
+  margin-right: 10px;
+}
+
+.action-row button:last-child {
+  margin-right: 0;
+}
+
+.faded {
+  color: #64748b;
 }
